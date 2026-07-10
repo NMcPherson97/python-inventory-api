@@ -1,0 +1,43 @@
+[
+    {
+        "item": "Laptop",
+        "category": "Electronics",
+        "quantity": 8,
+        "price": 950
+    },
+    {
+        "item": "Mouse",
+        "category": "Electronics",
+        "quantity": 25,
+        "price": 20
+    },
+    {
+        "item": "Desk",
+        "category": "Furniture",
+        "quantity": -4,
+        "price": 300
+    },
+    {
+        "item": "Chair",
+        "category": "Furniture",
+        "quantity": 10,
+        "price": -120
+    },
+    {
+        "item": "Monitor",
+        "category": "Electronics",
+        "quantity": "seven",
+        "price": 250
+    },
+    {
+        "item": "Notebook",
+        "category": "Office Supplies",
+        "quantity": 50
+    },
+    {
+        "item": "Pen",
+        "category": "Office Supplies",
+        "quantity": 100,
+        "price": 2
+    }
+]
