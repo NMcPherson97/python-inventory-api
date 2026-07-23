@@ -1,0 +1,265 @@
+/*
+===============================================================================
+THE ODIN PROJECT - LIBRARY PROJECT ROADMAP (JS ONLY)
+Using the existing HTML/CSS UI
+===============================================================================
+------------------------------------------------------------------------------
+STEP 1 - Display every book in the library
+------------------------------------------------------------------------------
+Goal:
+Loop through the myLibrary array and create one card for every Book object.
+
+Workflow:
+
+displayBooks()
+    ↓
+Select the .library container
+    ↓
+Clear existing cards
+    ↓
+Loop through myLibrary
+    ↓
+Create a card
+    ↓
+Fill it with book information
+    ↓
+Append it to the container
+
+Concepts:
+- forEach()
+- querySelector()
+- createElement()
+- classList
+- innerHTML
+- appendChild()
+
+Review:
+Loops & Iteration
+https://www.theodinproject.com/lessons/foundations-loops-and-iteration
+
+Arrays
+https://www.theodinproject.com/lessons/foundations-arrays
+
+DOM Manipulation & Events
+https://www.theodinproject.com/lessons/foundations-dom-manipulation-and-events
+
+MDN - createElement()
+https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+
+MDN - appendChild()
+https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+
+
+------------------------------------------------------------------------------
+STEP 2 - Make the existing "Add Book" button work
+------------------------------------------------------------------------------
+Goal:
+Your HTML already contains:
+- the form
+- the Add Book button
+
+Now use JavaScript to make the button actually add a Book.
+
+Workflow:
+
+User fills form
+    ↓
+Clicks "Add Book"
+    ↓
+preventDefault()
+    ↓
+Read values from each input
+    ↓
+Create a new Book object
+    ↓
+Push object into myLibrary
+    ↓
+displayBooks()
+    ↓
+(Optional) Clear/reset the form
+
+Concepts:
+- addEventListener()
+- submit events
+- input.value
+- preventDefault()
+- form.reset()
+
+Review:
+DOM Manipulation & Events
+https://www.theodinproject.com/lessons/foundations-dom-manipulation-and-events
+
+MDN - addEventListener()
+https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+
+MDN - preventDefault()
+https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+
+MDN - HTMLFormElement.reset()
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reset
+
+
+------------------------------------------------------------------------------
+STEP 3 - Remove a book
+------------------------------------------------------------------------------
+Goal:
+Every rendered card should include a Remove button.
+
+Workflow:
+
+Click Remove
+    ↓
+Identify which book was clicked
+    ↓
+Remove that object from myLibrary
+    ↓
+displayBooks()
+
+Possible array methods:
+- splice()
+- filter()
+
+Review:
+Arrays
+https://www.theodinproject.com/lessons/foundations-arrays
+
+MDN - splice()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+
+MDN - filter()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+
+
+------------------------------------------------------------------------------
+STEP 4 - Associate cards with Book objects
+------------------------------------------------------------------------------
+Goal:
+Each rendered card should know which Book object it represents.
+
+Recommended approach:
+
+Book object
+{
+    id: 4,
+    title: "...",
+    ...
+}
+
+Rendered card
+
+<div class="book-card" data-id="4">
+
+Whenever a button is clicked:
+
+Read dataset.id
+    ↓
+Find matching object
+    ↓
+Modify the array
+    ↓
+displayBooks()
+
+Concepts:
+- data-* attributes
+- dataset
+
+Review:
+MDN - data attributes
+https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
+
+MDN - dataset
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
+
+
+------------------------------------------------------------------------------
+STEP 5 - Make the Read Status button interactive
+------------------------------------------------------------------------------
+Goal:
+Your Read Status button already exists.
+
+Now connect it to your Book objects.
+
+Workflow:
+
+Click Read Status
+    ↓
+Determine which book was clicked
+    ↓
+Call that Book's toggleReadStatus() method
+    ↓
+displayBooks()
+
+Do NOT manually change the card text.
+
+Update the object first, then re-render the UI.
+
+Review:
+Objects & Object Constructors
+https://www.theodinproject.com/lessons/node-path-javascript-objects-and-object-constructors
+
+MDN - this
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
+
+
+------------------------------------------------------------------------------
+STEP 6 - Give each Book its own behavior
+------------------------------------------------------------------------------
+Goal:
+Instead of changing the read property directly every time,
+create a prototype method.
+
+Example idea:
+
+Book.prototype.toggleReadStatus()
+
+Its job:
+
+Current status?
+        ↓
+Flip true ↔ false
+        ↓
+Return to click handler
+        ↓
+displayBooks()
+
+Keeping behavior inside the Book object makes your code cleaner and easier to
+maintain.
+
+Review:
+Objects & Object Constructors
+https://www.theodinproject.com/lessons/node-path-javascript-objects-and-object-constructors
+
+MDN - Object Prototypes
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes
+
+
+------------------------------------------------------------------------------
+THE BIG IDEA
+------------------------------------------------------------------------------
+
+Never think:
+
+Button clicked
+    ↓
+Edit the HTML
+
+Instead think:
+
+Button clicked
+    ↓
+Update myLibrary
+    ↓
+displayBooks()
+    ↓
+HTML is rebuilt from the array
+
+The DOM is only a visual representation.
+
+myLibrary is the real application state.
+
+If your array is correct, displayBooks() can always recreate the entire UI.
+
+This "data → render UI" pattern is the foundation of React, Vue, Angular, and
+most modern frontend frameworks.
+===============================================================================
+*/
